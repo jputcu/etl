@@ -866,15 +866,15 @@ namespace etl
       }
 
       //***************************************************************************
+      /// The id of the current stored type.
+      //***************************************************************************
+      type_id_t type_id;
+
+      //***************************************************************************
       /// The internal storage.
       /// Aligned on a suitable boundary, which should be good for all types.
       //***************************************************************************
       typename etl::aligned_storage<SIZE, ALIGNMENT>::type data;
-
-      //***************************************************************************
-      /// The id of the current stored type.
-      //***************************************************************************
-      type_id_t type_id;
     };
 
     namespace private_variant
