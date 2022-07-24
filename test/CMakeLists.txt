@@ -340,6 +340,11 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 add_executable(etl_tests ${TEST_SOURCE_FILES})
+target_compile_options(etl_tests PRIVATE
+		$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
+			-Wall>
+		$<$<CXX_COMPILER_ID:MSVC>:
+			/W4>)
 add_library(unit_test ${UNITTEST_SOURCE_FILES})
 
 if(UNIX AND NOT APPLE)
