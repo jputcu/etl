@@ -128,13 +128,13 @@ namespace etl
     ///\ingroup variant
     //***************************************************************************
     template <typename T1,
-      typename T2 = etl::null_type<2>,
-      typename T3 = etl::null_type<3>,
-      typename T4 = etl::null_type<4>,
-      typename T5 = etl::null_type<5>,
-      typename T6 = etl::null_type<6>,
-      typename T7 = etl::null_type<7>,
-      typename T8 = etl::null_type<8> >
+              typename T2 = etl::null_type<2>,
+              typename T3 = etl::null_type<3>,
+              typename T4 = etl::null_type<4>,
+              typename T5 = etl::null_type<5>,
+              typename T6 = etl::null_type<6>,
+              typename T7 = etl::null_type<7>,
+              typename T8 = etl::null_type<8> >
       class variant
     {
     public:
@@ -866,15 +866,15 @@ namespace etl
       }
 
       //***************************************************************************
-      /// The id of the current stored type.
-      //***************************************************************************
-      type_id_t type_id;
-
-      //***************************************************************************
       /// The internal storage.
       /// Aligned on a suitable boundary, which should be good for all types.
       //***************************************************************************
       typename etl::aligned_storage<SIZE, ALIGNMENT>::type data;
+
+      //***************************************************************************
+      /// The id of the current stored type.
+      //***************************************************************************
+      type_id_t type_id;
     };
 
     namespace private_variant
@@ -895,13 +895,13 @@ namespace etl
     typedef TYPE type;                                                               \
   };
       ETL_VARIANT_HELPER(0, T1)
-        ETL_VARIANT_HELPER(1, T2)
-        ETL_VARIANT_HELPER(2, T3)
-        ETL_VARIANT_HELPER(3, T4)
-        ETL_VARIANT_HELPER(4, T5)
-        ETL_VARIANT_HELPER(5, T6)
-        ETL_VARIANT_HELPER(6, T7)
-        ETL_VARIANT_HELPER(7, T8)
+      ETL_VARIANT_HELPER(1, T2)
+      ETL_VARIANT_HELPER(2, T3)
+      ETL_VARIANT_HELPER(3, T4)
+      ETL_VARIANT_HELPER(4, T5)
+      ETL_VARIANT_HELPER(5, T6)
+      ETL_VARIANT_HELPER(6, T7)
+      ETL_VARIANT_HELPER(7, T8)
 #undef ETL_VARIANT_HELPER
     }  // namespace private_variant
 
@@ -972,9 +972,9 @@ namespace etl
   }
 
     ETL_GEN_LEGACY_VISIT(&, &)
-      ETL_GEN_LEGACY_VISIT(const&, &)
-      ETL_GEN_LEGACY_VISIT(&, const&)
-      ETL_GEN_LEGACY_VISIT(const&, const&)
+    ETL_GEN_LEGACY_VISIT(const&, &)
+    ETL_GEN_LEGACY_VISIT(&, const&)
+    ETL_GEN_LEGACY_VISIT(const&, const&)
 
 #undef ETL_GEN_LEGACY_VISIT
 
