@@ -733,6 +733,15 @@ namespace
     }
 
     //*************************************************************************
+#if defined(ETL_COMPILER_GCC)
+  #pragma GCC diagnostic push
+  #pragma GCC diagnostic ignored "-Wunused-function"
+#endif
+
+#if defined(ETL_COMPILER_CLANG)
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wunused-function"
+#endif
     struct C_issue_482 {};
 
     void f_issue_482(etl::array_view<char>)
@@ -750,7 +759,13 @@ namespace
       // Should compile without ambiguous function error.
       f_issue_482(c);
     }
+#if defined(ETL_COMPILER_GCC)
+  #pragma GCC diagnostic pop
+#endif
 
+#if defined(ETL_COMPILER_CLANG)
+  #pragma clang diagnostic pop
+#endif
     //*************************************************************************
     TEST(test_fill)
     {

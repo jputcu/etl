@@ -41,6 +41,23 @@ set_target_properties(t98 PROPERTIES
         CXX_STANDARD_REQUIRED ON
         CXX_EXTENSIONS ON
         )
+
+if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+  message(STATUS "Using MSVC")
+endif()
+
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+  message(STATUS "Using GNU")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wextra")
+endif()
+
+if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  message(STATUS "Using Clang")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wextra")
+endif()
+
 target_sources(t98 PRIVATE etl_profile.h
         ../absolute.h.t.cpp
         ../algorithm.h.t.cpp

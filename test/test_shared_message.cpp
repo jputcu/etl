@@ -80,17 +80,17 @@ namespace
     {
     }
 
-    void on_receive(const Message1& message)
+    void on_receive(const Message1&)
     {
       ++count_message1;
     }
 
-    void on_receive(const Message2& message)
+    void on_receive(const Message2&)
     {
       ++count_message2;
     }
 
-    void on_receive_unknown(const etl::imessage& message)
+    void on_receive_unknown(const etl::imessage&)
     {
 
     }
@@ -118,12 +118,12 @@ namespace
     {
     }
 
-    void on_receive(const Message1& message)
+    void on_receive(const Message1&)
     {
       ++count_message1;
     }
 
-    void on_receive_unknown(const etl::imessage& message)
+    void on_receive_unknown(const etl::imessage&)
     {
       ++count_unknown_message;
     }
@@ -173,7 +173,7 @@ namespace
           return rcm2;
         }
 
-        void release(const etl::ireference_counted_message& msg) override
+        void release(const etl::ireference_counted_message&) override
         {
           // Do nothing.
         }

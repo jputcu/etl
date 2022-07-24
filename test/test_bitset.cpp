@@ -1066,12 +1066,12 @@ namespace
       etl::bitset<24> bits24;
       bits24.set(12);
 
-      CHECK_EQUAL(12, bits16.find_first(true));
-      CHECK_EQUAL(12, bits16.find_next(true, 4));
+      CHECK_EQUAL(12U, bits16.find_first(true));
+      CHECK_EQUAL(12U, bits16.find_next(true, 4));
       CHECK_EQUAL(etl::ibitset::npos, bits16.find_next(true, 13));
 
-      CHECK_EQUAL(12, bits24.find_first(true));
-      CHECK_EQUAL(12, bits24.find_next(true, 4));
+      CHECK_EQUAL(12U, bits24.find_first(true));
+      CHECK_EQUAL(12U, bits24.find_next(true, 4));
       CHECK_EQUAL(etl::ibitset::npos, bits24.find_next(true, 13));
     }
 

@@ -47,10 +47,8 @@ struct non_random_iterator : public etl::iterator<ETL_OR_STD::bidirectional_iter
   {
   }
 
-  non_random_iterator(const non_random_iterator& other)
-  {
-    ptr = other.ptr;
-  }
+  non_random_iterator(const non_random_iterator& other) = default;
+  non_random_iterator& operator =(const non_random_iterator& other) = default;
 
   T& operator *()
   {
@@ -126,10 +124,8 @@ struct random_iterator : public etl::iterator<ETL_OR_STD::random_access_iterator
   {
   }
 
-  random_iterator(const random_iterator& other)
-  {
-    ptr = other.ptr;
-  }
+  random_iterator(const random_iterator& other) = default;
+  random_iterator& operator =(const random_iterator& other) = default;
 
   T& operator *()
   {

@@ -43,9 +43,9 @@ namespace
   //***********************************
   // Count bits the easy way.
   template <typename T>
-  size_t test_count(T value)
+  int test_count(T value)
   {
-    size_t count = 0UL;
+    int count = 0;
 
     for (int i = 0; i < etl::integral_limits<T>::bits; ++i)
     {
@@ -61,9 +61,9 @@ namespace
   //***********************************
   // Count trailing zeros the long way.
   template <typename T>
-  size_t test_trailing_zeros(T value)
+  int test_trailing_zeros(T value)
   {
-    size_t count = 0UL;
+    int count = 0;
 
     for (int i = 0; i < etl::integral_limits<T>::bits; ++i)
     {
@@ -85,7 +85,7 @@ namespace
   //***********************************
   // Count leading zeros the long way.
   template <typename T>
-  size_t test_leading_zeros(T value)
+  int test_leading_zeros(T value)
   {
     value = etl::reverse_bits(value);
     return test_trailing_zeros(value);
@@ -94,9 +94,9 @@ namespace
   //***********************************
   // Count trailing ones the long way.
   template <typename T>
-  size_t test_trailing_ones(T value)
+  int test_trailing_ones(T value)
   {
-    size_t count = 0UL;
+    int count = 0;
 
     for (int i = 0; i < etl::integral_limits<T>::bits; ++i)
     {
@@ -118,7 +118,7 @@ namespace
   //***********************************
   // Count leading ones the long way.
   template <typename T>
-  size_t test_leading_ones(T value)
+  int test_leading_ones(T value)
   {
     value = etl::reverse_bits(value);
     return test_trailing_ones(value);
@@ -127,9 +127,9 @@ namespace
   //***********************************
   // Check parity the easy way.
   template <typename T>
-  size_t test_parity(T value)
+  int test_parity(T value)
   {
-    size_t count = test_count(value);
+    int count = test_count(value);
 
     return count & 1;
   }
@@ -196,51 +196,51 @@ namespace
 
       value = 0x00U;
       value = etl::rotate_left(value);
-      CHECK_EQUAL(0, int(value));
+      CHECK_EQUAL(int(0), int(value));
 
       value = 0x21U;
       value = etl::rotate_left(value);
-      CHECK_EQUAL(0x42U, int(value));
+      CHECK_EQUAL(int(0x42U), int(value));
 
       value = 0x42U;
       value = etl::rotate_left(value);
-      CHECK_EQUAL(0x84U, int(value));
+      CHECK_EQUAL(int(0x84U), int(value));
 
       value = 0x84U;
       value = etl::rotate_left(value);
-      CHECK_EQUAL(0x09U, int(value));
+      CHECK_EQUAL(int(0x09U), int(value));
 
       value = 0xB7U;
       value = etl::rotate_left(value, 2);
-      CHECK_EQUAL(0xDEU, int(value));
+      CHECK_EQUAL(int(0xDEU), int(value));
 
       value = 0xB7U;
       value = etl::rotate_left(value, 3);
-      CHECK_EQUAL(0xBDU, int(value));
+      CHECK_EQUAL(int(0xBDU), int(value));
 
       value = 0xB7U;
       value = etl::rotate_left(value, 4);
-      CHECK_EQUAL(0x7BU, int(value));
+      CHECK_EQUAL(int(0x7BU), int(value));
 
       value = 0xB7U;
       value = etl::rotate_left(value, 5);
-      CHECK_EQUAL(0xF6U, int(value));
+      CHECK_EQUAL(int(0xF6U), int(value));
 
       value = 0xB7U;
       value = etl::rotate_left(value, 6);
-      CHECK_EQUAL(0xEDU, int(value));
+      CHECK_EQUAL(int(0xEDU), int(value));
 
       value = 0xB7U;
       value = etl::rotate_left(value, 7);
-      CHECK_EQUAL(0xDBU, int(value));
+      CHECK_EQUAL(int(0xDBU), int(value));
 
       value = 0xB7U;
       value = etl::rotate_left(value, 8);
-      CHECK_EQUAL(0xB7U, int(value));
+      CHECK_EQUAL(int(0xB7U), int(value));
 
       value = 0xB7U;
       value = etl::rotate_left(value, 9);
-      CHECK_EQUAL(0x6FU, int(value));
+      CHECK_EQUAL(int(0x6FU), int(value));
     }
 
 #if !defined(ETL_FORCE_NO_ADVANCED_CPP)
@@ -264,83 +264,83 @@ namespace
 
       value = 0x8421U;
       value = etl::rotate_left(value);
-      CHECK_EQUAL(0x0843U, value);
+      CHECK_EQUAL(int(0x0843U), int(value));
 
       value = 0x0843U;
       value = etl::rotate_left(value);
-      CHECK_EQUAL(0x1086U, value);
+      CHECK_EQUAL(int(0x1086U), int(value));
 
       value = 0x1086U;
       value = etl::rotate_left(value);
-      CHECK_EQUAL(0x210CU, value);
+      CHECK_EQUAL(int(0x210CU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 2);
-      CHECK_EQUAL(0xDCF2U, int(value));
+      CHECK_EQUAL(int(0xDCF2U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 3);
-      CHECK_EQUAL(0xB9E5U, int(value));
+      CHECK_EQUAL(int(0xB9E5U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 4);
-      CHECK_EQUAL(0x73CBU, int(value));
+      CHECK_EQUAL(int(0x73CBU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 5);
-      CHECK_EQUAL(0xE796U, int(value));
+      CHECK_EQUAL(int(0xE796U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 6);
-      CHECK_EQUAL(0xCF2DU, int(value));
+      CHECK_EQUAL(int(0xCF2DU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 7);
-      CHECK_EQUAL(0x9E5BU, int(value));
+      CHECK_EQUAL(int(0x9E5BU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 8);
-      CHECK_EQUAL(0x3CB7U, int(value));
+      CHECK_EQUAL(int(0x3CB7U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 9);
-      CHECK_EQUAL(0x796EU, int(value));
+      CHECK_EQUAL(int(0x796EU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 9);
-      CHECK_EQUAL(0x796EU, int(value));
+      CHECK_EQUAL(int(0x796EU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 10);
-      CHECK_EQUAL(0xF2DCU, int(value));
+      CHECK_EQUAL(int(0xF2DCU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 11);
-      CHECK_EQUAL(0xE5B9U, int(value));
+      CHECK_EQUAL(int(0xE5B9U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 12);
-      CHECK_EQUAL(0xCB73U, int(value));
+      CHECK_EQUAL(int(0xCB73U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 13);
-      CHECK_EQUAL(0x96E7U, int(value));
+      CHECK_EQUAL(int(0x96E7U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 14);
-      CHECK_EQUAL(0x2DCFU, int(value));
+      CHECK_EQUAL(int(0x2DCFU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 15);
-      CHECK_EQUAL(0x5B9EU, int(value));
+      CHECK_EQUAL(int(0x5B9EU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 16);
-      CHECK_EQUAL(0xB73CU, int(value));
+      CHECK_EQUAL(int(0xB73CU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_left(value, 17);
-      CHECK_EQUAL(0x6E79U, int(value));
+      CHECK_EQUAL(int(0x6E79U), int(value));
     }
 
 #if !defined(ETL_FORCE_NO_ADVANCED_CPP)
@@ -360,51 +360,51 @@ namespace
 
       value = 0x00U;
       value = etl::rotate_right(value);
-      CHECK_EQUAL(0, int(value));
+      CHECK_EQUAL(int(0), int(value));
 
       value = 0x21U;
       value = etl::rotate_right(value);
-      CHECK_EQUAL(0x90U, int(value));
+      CHECK_EQUAL(int(0x90U), int(value));
 
       value = 0x42U;
       value = etl::rotate_right(value);
-      CHECK_EQUAL(0x21U, int(value));
+      CHECK_EQUAL(int(0x21U), int(value));
 
       value = 0x84U;
       value = etl::rotate_right(value);
-      CHECK_EQUAL(0x42U, int(value));
+      CHECK_EQUAL(int(0x42U), int(value));
 
       value = 0xB7U;
       value = etl::rotate_right(value, 2);
-      CHECK_EQUAL(0xEDU, int(value));
+      CHECK_EQUAL(int(0xEDU), int(value));
 
       value = 0xB7U;
       value = etl::rotate_right(value, 3);
-      CHECK_EQUAL(0xF6U, int(value));
+      CHECK_EQUAL(int(0xF6U), int(value));
 
       value = 0xB7U;
       value = etl::rotate_right(value, 4);
-      CHECK_EQUAL(0x7BU, int(value));
+      CHECK_EQUAL(int(0x7BU), int(value));
 
       value = 0xB7U;
       value = etl::rotate_right(value, 5);
-      CHECK_EQUAL(0xBDU, int(value));
+      CHECK_EQUAL(int(0xBDU), int(value));
 
       value = 0xB7U;
       value = etl::rotate_right(value, 6);
-      CHECK_EQUAL(0xDEU, int(value));
+      CHECK_EQUAL(int(0xDEU), int(value));
 
       value = 0xB7U;
       value = etl::rotate_right(value, 7);
-      CHECK_EQUAL(0x6FU, int(value));
+      CHECK_EQUAL(int(0x6FU), int(value));
 
       value = 0xB7U;
       value = etl::rotate_right(value, 8);
-      CHECK_EQUAL(0xB7U, int(value));
+      CHECK_EQUAL(int(0xB7U), int(value));
 
       value = 0xB7U;
       value = etl::rotate_right(value, 9);
-      CHECK_EQUAL(0xDBU, int(value));
+      CHECK_EQUAL(int(0xDBU), int(value));
     }
 
 #if !defined(ETL_FORCE_NO_ADVANCED_CPP)
@@ -423,88 +423,88 @@ namespace
       uint16_t value;
 
       value = 0x0000U;
-      value = etl::rotate_right(value);
-      CHECK_EQUAL(0, value);
+      value = etl::rotate_right(int(value));
+      CHECK_EQUAL(int(0), value);
 
       value = 0x8421U;
       value = etl::rotate_right(value);
-      CHECK_EQUAL(0xC210U, value);
+      CHECK_EQUAL(int(0xC210U), int(value));
 
       value = 0xC210U;
       value = etl::rotate_right(value);
-      CHECK_EQUAL(0x6108U, value);
+      CHECK_EQUAL(int(0x6108U), int(value));
 
       value = 0x6108U;
       value = etl::rotate_right(value);
-      CHECK_EQUAL(0x3084U, value);
+      CHECK_EQUAL(int(0x3084U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 2);
-      CHECK_EQUAL(0x2DCFU, int(value));
+      CHECK_EQUAL(int(0x2DCFU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 3);
-      CHECK_EQUAL(0x96E7U, int(value));
+      CHECK_EQUAL(int(0x96E7U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 4);
-      CHECK_EQUAL(0xCB73U, int(value));
+      CHECK_EQUAL(int(0xCB73U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 5);
-      CHECK_EQUAL(0xE5B9U, int(value));
+      CHECK_EQUAL(int(0xE5B9U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 6);
-      CHECK_EQUAL(0xF2DCU, int(value));
+      CHECK_EQUAL(int(0xF2DCU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 7);
-      CHECK_EQUAL(0x796EU, int(value));
+      CHECK_EQUAL(int(0x796EU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 8);
-      CHECK_EQUAL(0x3CB7U, int(value));
+      CHECK_EQUAL(int(0x3CB7U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 9);
-      CHECK_EQUAL(0x9E5BU, int(value));
+      CHECK_EQUAL(int(0x9E5BU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 9);
-      CHECK_EQUAL(0x9E5BU, int(value));
+      CHECK_EQUAL(int(0x9E5BU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 10);
-      CHECK_EQUAL(0xCF2DU, int(value));
+      CHECK_EQUAL(int(0xCF2DU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 11);
-      CHECK_EQUAL(0xE796U, int(value));
+      CHECK_EQUAL(int(0xE796U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 12);
-      CHECK_EQUAL(0x73CBU, int(value));
+      CHECK_EQUAL(int(0x73CBU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 13);
-      CHECK_EQUAL(0xB9E5U, int(value));
+      CHECK_EQUAL(int(0xB9E5U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 14);
-      CHECK_EQUAL(0xDCF2U, int(value));
+      CHECK_EQUAL(int(0xDCF2U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 15);
-      CHECK_EQUAL(0x6E79U, int(value));
+      CHECK_EQUAL(int(0x6E79U), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 16);
-      CHECK_EQUAL(0xB73CU, int(value));
+      CHECK_EQUAL(int(0xB73CU), int(value));
 
       value = 0xB73CU;
       value = etl::rotate_right(value, 17);
-      CHECK_EQUAL(0x5B9EU, int(value));
+      CHECK_EQUAL(int(0x5B9EU), int(value));
     }
 
 #if !defined(ETL_FORCE_NO_ADVANCED_CPP)
@@ -526,12 +526,12 @@ namespace
       offset = 4;
       value = 0xB73CU;
       value = etl::rotate(value, offset);
-      CHECK_EQUAL(0x73CBU, int(value));
+      CHECK_EQUAL(int(0x73CBU), int(value));
 
       offset = -4;
       value = 0xB73CU;
       value = etl::rotate(value, offset);
-      CHECK_EQUAL(0xCB73U, int(value));
+      CHECK_EQUAL(int(0xCB73U), int(value));
     }
 
 #if !defined(ETL_FORCE_NO_ADVANCED_CPP)
@@ -551,27 +551,27 @@ namespace
 
       value = 0xF0U;
       value = etl::reverse_bits(value);
-      CHECK_EQUAL(0x0FU, int(value));
+      CHECK_EQUAL(int(0x0FU), int(value));
 
       value = 0x0FU;
       value = etl::reverse_bits(value);
-      CHECK_EQUAL(0xF0U, int(value));
+      CHECK_EQUAL(int(0xF0U), int(value));
 
       value = 0xA5U;
       value = etl::reverse_bits(value);
-      CHECK_EQUAL(0xA5U, int(value));
+      CHECK_EQUAL(int(0xA5U), int(value));
 
       value = 0x5AU;
       value = etl::reverse_bits(value);
-      CHECK_EQUAL(0x5AU, int(value));
+      CHECK_EQUAL(int(0x5AU), int(value));
 
       value = 0xCAU;
       value = etl::reverse_bits(value);
-      CHECK_EQUAL(0x53U, int(value));
+      CHECK_EQUAL(int(0x53U), int(value));
 
       value = 0xACU;
       value = etl::reverse_bits(value);
-      CHECK_EQUAL(0x35U, int(value));
+      CHECK_EQUAL(int(0x35U), int(value));
     }
 
 #if !defined(ETL_FORCE_NO_ADVANCED_CPP)
@@ -1226,7 +1226,7 @@ namespace
     {
       char temp[etl::fold_bits<int64_t, 7>(0xE8C9AACCBC3D9A8FULL)];
 
-      CHECK_EQUAL((etl::fold_bits<int64_t, 7>(0xE8C9AACCBC3D9A8FULL)), sizeof(temp));
+      CHECK_EQUAL((etl::fold_bits<int64_t, 7>(0xE8C9AACCBC3D9A8FULL)), int64_t(sizeof(temp)));
     }
 #endif
 
@@ -1424,7 +1424,7 @@ namespace
     {
       char temp[etl::sign_extend<int8_t, 6>(0x1AU)];
 
-      CHECK_EQUAL((etl::sign_extend<int8_t, 6>(0x1AU)), sizeof(temp));
+      CHECK_EQUAL(int(etl::sign_extend<int8_t, 6>(0x1AU)), int(sizeof(temp)));
     }
 #endif
 
