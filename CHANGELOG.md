@@ -1,22 +1,36 @@
-﻿
+﻿# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+
+## [Unreleased]
+
+### Added
+### Fixed
+### Changed
+### Removed
+
+## [20.39.3] - 2024-08-07
+
+### Removed
+
+- Removed C++11 restriction on `etl::observer::notification`
+
+### Changed
+
+- [#946](https://github.com/ETLCPP/etl/issues/946) Make include paths to private files relative
+
+### Fixed
+
+- [#917](https://github.com/ETLCPP/etl/issues/917) `unaligned_type` doesn't compile with floating point types
+
+## [20.39.2] -
+
+- Removed `EmbeddedTemplateLibrary-20.39.0.tar.gz` from project.
+
+
 ~~~~
-===============================================================================
-20.39.3
-
-Updates:
-Removed C++11 restriction on etl::observer::notification
-
-Fixes:
-#917 unaligned_type doesn't compile with floating point types
-
-Pull Requests:
-#946 Make include paths to private files relative
-
-===============================================================================
-20.39.2
-
-Removed EmbeddedTemplateLibrary-20.39.0.tar.gz from project.
-
 ===============================================================================
 20.39.1
 
